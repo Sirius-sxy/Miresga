@@ -110,9 +110,9 @@ status_t pkt_processor_t::process_pkts(rte_mbuf **recv_pkts, size_t pkt_num) {
                         continue;
                     }
                     if(tcp_hdr->tcp_flags & RTE_TCP_FIN_FLAG) {
-                        // #ifdef DEBUG
-                        // std::cout << "Receive a fin packet.\n" << std::endl;
-                        // #endif
+                        #ifdef DEBUG
+                        std::cout << "Receive a fin packet.\n" << std::endl;
+                        #endif
                         status = reply_rst_pkt(recv_pkts[i], send_pkts[send_size]);
                         if(status != status_t::OK) {
                             std::cout << "Failed to reply rst pkt.\n" << std::endl;
